@@ -12,12 +12,10 @@ with open('metadata2.csv', mode ='r')as file:
         print(f'\t<p class="ml-2 mb-0">{line["Pub start"]} to {line["Pub end"]}</p> ')
         print('\t<hr/>')
         print('<div class="small px-2 py-1">')
-        print(f'\t\t<p>{line["Notes"]}</p>')
+        print(f'\t<p>{line["Notes"]}</p>')
         print(f'<p>{line["Related items"]}</p>')
         print('\t</div>')
         print('</div>')
 
         print()
 
-
-#print(f"First line: {metadata[0]}")
