@@ -42,7 +42,7 @@ with open(sys.argv[1], mode ='r') as file:
 
       for i, match in enumerate(matching_url_array):
         if match is None:
-          break
+          continue
         
         title_with_url = f"<a href={matching_url_array[i]}>{title_array[i]}</a>"
         related_items_field = related_items_field.replace(title_array[i], title_with_url)
