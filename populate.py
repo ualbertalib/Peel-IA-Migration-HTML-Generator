@@ -26,7 +26,6 @@ with open(sys.argv[1], mode ='r') as file:
       urls[line["Q code"]] = line["IA URL"]
     elif line["Primary Access"] == "Peel":
       urls[line["Q code"]] = line["Peel URL"]
-  print(urls)
   file.seek(0)
 
   for line_count, line in enumerate(metadata):
@@ -44,7 +43,7 @@ with open(sys.argv[1], mode ='r') as file:
         if match is None:
           continue
         
-        title_with_url = f"<a href={matching_url_array[i]}>{title_array[i]}</a>"
+        title_with_url = f"<a href=\"{matching_url_array[i]}\">{title_array[i]}</a>"
         related_items_field = related_items_field.replace(title_array[i], title_with_url)
     
     else:
