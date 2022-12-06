@@ -49,11 +49,17 @@ with open(sys.argv[1], mode ='r') as file:
     else:
       logging.error(f"Links on line {line_count+1} do not match on 'Related items' column")
 
+    publication_range = ''
+    if line["Pub start"]:
+      publication_range = line["Pub start"]
+    if line["Pub end"]:
+      publication_range += f' to {line["Pub end"]}'
+
     print(f'''
       <!--{line["Display title"]}-->
       <div class="card card-body item {line["Coverage-Province"]} {line["Language"]} {line["Coverage-City1"]}>">
         <h5><a href="https://archive.org/details/{line["Q code"]}">{line["Display title"]}</a></h5>
-        <p class="ml-2 mb-0">{line["Pub start"]} to {line["Pub end"]}</p>
+        <p class="ml-2 mb-0">{publication_range}</p>
         <hr/>
         <div class="small px-2 py-1">
         <p>{line["Notes"]}</p>
