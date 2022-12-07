@@ -29,23 +29,28 @@ with open(sys.argv[1], mode ='r') as file:
   file.seek(0)
 
   for line_count, line in enumerate(metadata):
+    if line_count == 0:
+      continue
     short_code_array = re.findall(r'<b>(.*?)\</b>', line["Related items"])
+    for related_item_index, related_item in enumerate(line["Related items"].split("<br>")):
+      if '<b>' not in related_item and related_item:
+        short_code_array.insert(related_item_index, None)
 
     # Here we link to the matching shortcode inside bold tag. Change regex to
     # (<i>.*?<\/i>) if we just want to link the title
-    title_array = re.findall(r'(<i>.*?<\/b>)', line["Related items"])
+    title_array = re.findall(r'<i>(.*?)<\/i>', line["Related items"])
     matching_url_array = list(map(getUrl, short_code_array))
     related_items_field = line["Related items"]
-
     if (len(title_array) == len(matching_url_array)):
 
       for i, match in enumerate(matching_url_array):
-        if match is None:
-          continue
-        
-        title_with_url = f"<a href=\"{matching_url_array[i]}\">{title_array[i]}</a>"
-        related_items_field = related_items_field.replace(title_array[i], title_with_url)
-    
+        related_items_field_regex = r'(<b>.*?<i>)' + re.escape(title_array[i]) + r'(<\/i>)'
+        replacing_title = title_array[i]
+        if match:
+          replacing_title = f"<a href=\"{matching_url_array[i]}\">{title_array[i]}</a>"
+          
+        related_items_field = re.sub(related_items_field_regex, replacing_title, related_items_field)
+
     else:
       logging.error(f"Links on line {line_count+1} do not match on 'Related items' column")
 
