@@ -42,7 +42,6 @@ with open(sys.argv[1], mode ='r') as file:
     matching_url_array = list(map(getUrl, short_code_array))
     related_items_field = line["Related items"]
     if (len(title_array) == len(matching_url_array)):
-
       for i, match in enumerate(matching_url_array):
         related_items_field_regex = r'(<b>.*?<i>)' + re.escape(title_array[i]) + r'(<\/i>)'
         replacing_title = title_array[i]
@@ -62,8 +61,8 @@ with open(sys.argv[1], mode ='r') as file:
 
     print(f'''
       <!--{line["Display title"]}-->
-      <div class="card card-body item {line["Coverage-Province"]} {line["Language"]} {line["Coverage-City1"]}>">
-        <h5><a href="https://archive.org/details/{line["Q code"]}">{line["Display title"]}</a></h5>
+      <div class="card card-body item {line["Coverage-Province"]} {line["Language"]} {line["Coverage-City1"]}">
+        <h5><a href="{urls[line["Q code"]]}">{line["Display title"]}</a></h5>
         <p class="ml-2 mb-0">{publication_range}</p>
         <hr/>
         <div class="small px-2 py-1">
