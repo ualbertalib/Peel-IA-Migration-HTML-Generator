@@ -10,7 +10,7 @@ Requirements:
   - python3
   - A .CSV with the following headers in the first row:
 ```
-"Primary Access" "Q code" "IA URL" "Peel URL" "Pub start" "Pub end" "Related items" "Display title" "Coverage-Province" "Language" "Coverage-City1" "Notes"
+"Primary Access" "Q code" "IA URL" "Peel URL" "Pub start" "Pub end" "Related items" "Display title" "Coverage-Province" "Language" "Coverage-City1" "Notes" "number of issues" "date range of digitization"
 ```
 
 Usage:
