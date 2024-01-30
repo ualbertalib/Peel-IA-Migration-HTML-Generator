@@ -65,7 +65,7 @@ if __name__ == '__main__':
           related_items_field_regex = r'(<b>.*?<i>)' + re.escape(title_array[i]) + r'(<\/i>)'
           replacing_title = title_array[i]
           if match:
-            replacing_title = f"<a href=\"{matching_url_array[i]}\">{title_array[i]}</a>"
+            replacing_title = f"<i><a href=\"{matching_url_array[i]}\">{title_array[i]}</a></i>"
 
           related_items_field = re.sub(related_items_field_regex, replacing_title, related_items_field)
 
@@ -79,10 +79,10 @@ if __name__ == '__main__':
         <!--{line["Display title"]}-->
         <div class="card card-body item {line["Coverage-Province"]} {line["Language"]} {line["Coverage-City1"]}">
           <h5><a href="{get_url(line["Q code"])}">{line["Display title"]}</a></h5>
-          <p class="ml-2 mb-0">{publication_range}</p>
-          <hr/>
+          <p class="ml-2 mb-0 small font-weight-bold">{line["number of issues"]} issues digitized from {line["date range of digitization"]}</p>
           <div class="small px-2 py-1">
           <p>{line["Notes"]}</p>
+          <hr/>
           <p>{related_items_field}</p>
           </div>
         </div>
