@@ -10,11 +10,11 @@ Requirements:
   - python3
   - A .CSV with the following headers in the first row:
 ```
-"Primary Access" "Q code" "IA URL" "Peel URL" "Pub start" "Pub end" "Related items" "Display title" "Coverage-Province" "Language" "Coverage-City1" "Notes" "number of issues" "date range of digitization"
+"Primary Access", "Q code", "IA URL", "Peel URL", "Pub start", "Pub end", "Related items", "Display title", "Coverage-Province", "Language", "Coverage-City1", "Notes", "number of issues", "date range of digitization"
 ```
 
 Usage:
-  - Pull down this repo for the script ```populate.py```
+  - Pull this repo for the script ```populate.py```
   - Bring the script ```populate.py``` and the desired .CSV into the same directory
   - While within the script and CSV directory run the script from the command line as follows:
 ```python3 populate.py PROVIDED_CSV.csv```
